@@ -1,10 +1,8 @@
 <script lang="ts">
 	import ShowLinks from '../components/showLinks.svelte';
-
-	import { fade, fly } from 'svelte/transition';
-	import { handleChange } from '../store.js';
-
 	import FormComponent from '../components/FormComponent.svelte';
+  import { fade, fly } from 'svelte/transition';
+	import { handleChange } from '../store.js';
 
 
   	function handleClick() {
