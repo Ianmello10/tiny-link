@@ -10,12 +10,7 @@ declare global {
 
 	}
 
-  declare type Link = {
-    shortName: string; 
-    url:string;
-    id: number
-    count: number
-  }
+ 
 }
 
-export { Link};
+export {};

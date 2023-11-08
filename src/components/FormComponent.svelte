@@ -2,15 +2,10 @@
 <script lang="ts">
 import { dataLinks } from '../store.js';
 import IoIosArrowDropright from 'svelte-icons/io/IoIosArrowDropright.svelte';
-import { validateLinks } from '$lib';
+import { validateLinks } from '$lib/index.js';
+import type {Link} from '$lib/types.js';
 import Toast from './Toast.svelte';
 
-interface Link{ 
-  url : string,
-  shortName : string,
-  id : string,
-  count : number
-}
 
 export let handleClick : () => void
 
@@ -41,16 +36,14 @@ function updateComponent() {
      setTimeout(() => warn2 = false, 1400);
      return 
 }
- 
-		shortLink = shortLink.trim();
+    shortLink = shortLink.trim();
 		urlLink = urlLink.trim();
 
     $dataLinks = [...$dataLinks, links];
 		toast = true;
 		urlLink = '';
 		shortLink = '';
-
-		setTimeout(() => (toast = false), 1400);
+    setTimeout(() => (toast = false), 1400);
 } 	
 
 function shorterLink(){ 

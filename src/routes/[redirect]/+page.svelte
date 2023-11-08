@@ -8,7 +8,7 @@ export let data
 
   //$dataLinks 
 
-  for(let i = 0; i < $dataLinks.length; i++){
+  for(let i : number = 0; i < $dataLinks.length; i++){
   
 
      if(data.redirect === $dataLinks[i].shortName){

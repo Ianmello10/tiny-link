@@ -5,24 +5,23 @@ import { fade } from 'svelte/transition';
 import IoIosArrowDropleft from 'svelte-icons/io/IoIosArrowDropleft.svelte'
 import IoMdEye from 'svelte-icons/io/IoMdEye.svelte'
 import IoMdTrash from 'svelte-icons/io/IoMdTrash.svelte'
+import type {Link} from '$lib/types.js'
+
+ 
 
 function handleClick(){
 
-  $handleChange = !$handleChange
-
-   console.log('component!!')
-  
+  $handleChange = !$handleChange 
 }
 
 
-
-function teste(id){
+function deleteLink(id: string): void{
 
  dataLinks.update(array =>{
 
-  const index = array.findIndex(link => link.id === id)
+ const index = array.findIndex((link : Link)  => link.id === id)
    
-  if(index !== -1){
+ if(index !== -1){
        
     array.splice(index,1)
       
@@ -64,7 +63,7 @@ function teste(id){
           </div>
           
 
-          <button class="w-6 h-6" on:click={teste(link.id)}>
+          <button class="w-6 h-6" on:click={deleteLink(link.id)}>
             <IoMdTrash class="w-6 h-6"/>
             </button>
       
