@@ -10,7 +10,7 @@ export let handleClick
 	let urlLink = '';
 	let shortLink = '';
 	let count = 0;
-	let toast = false;
+	let toast : boolean = false 
 	let warn = false;
 	let warn2 = false;
 
