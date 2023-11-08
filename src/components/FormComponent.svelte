@@ -1,29 +1,37 @@
 
 <script lang="ts">
-	import { dataLinks } from '../store.js';
-	import IoIosArrowDropright from 'svelte-icons/io/IoIosArrowDropright.svelte';
-	import { validateLinks } from '$lib';
+import { dataLinks } from '../store.js';
+import IoIosArrowDropright from 'svelte-icons/io/IoIosArrowDropright.svelte';
+import { validateLinks } from '$lib';
 import Toast from './Toast.svelte';
 
-export let handleClick
+interface Link{ 
+  url : string,
+  shortName : string,
+  id : string,
+  count : number
+}
 
-	let urlLink = '';
-	let shortLink = '';
-	let count = 0;
+export let handleClick : () => void
+
+	let urlLink : string = ''
+	let shortLink : string = ''
+	let count : number = 0
 	let toast : boolean = false 
-	let warn = false;
-	let warn2 = false;
+	let warn : boolean = false
+	let warn2 : boolean = false
 
 
-	function updateComponent() {
+function updateComponent() {
 
-		const id = Math.floor(1000 + Math.random() * 9000).toFixed(1);
+	const id  : string = Math.floor(1000 + Math.random() * 9000).toFixed(1);
 
-		let links = {
-			shortName: shortLink + id,
-			url: urlLink,
-			id: id,
-			count: count
+	let links : Link = {
+		shortName: shortLink + id,
+		url: urlLink,
+		id: id,
+		count: count
+     
 		};
 
 
@@ -48,12 +56,14 @@ export let handleClick
 function shorterLink(){ 
 
   if(validateLinks(urlLink,shortLink)){
-       warn = false 
-       updateComponent()
-    }
-      else {
-             warn = true 
-    }
+   
+    warn = false 
+    updateComponent()
+    
+  } else {
+     warn = true 
+    
+     }
 }
 
  
@@ -69,10 +79,9 @@ function shorterLink(){
 {/if}
 
 
-  	<form
-        class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-auto p-4 top-10 relative text-white flex flex-col justify-evenly
-   m-4 rounded-2xl shadow-md border-2 border-orange-600"
-		>
+  <form class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-auto p-4 top-10 relative text-white flex flex-col justify-evenly
+   m-4 rounded-2xl shadow-md border-2 border-orange-600">
+
 			<button class="absolute right-2 top-2 w-8 h-10" on:click={handleClick}>
 				<IoIosArrowDropright class="w-full h-full text-white" />
 			</button>

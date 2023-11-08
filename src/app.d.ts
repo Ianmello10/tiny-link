@@ -6,7 +6,16 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface Platform {}
+    //
+
 	}
+
+  declare type Link = {
+    shortName: string; 
+    url:string;
+    id: number
+    count: number
+  }
 }
 
-export {};
+export { Link};
