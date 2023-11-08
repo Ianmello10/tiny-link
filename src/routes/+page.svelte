@@ -4,6 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { dataLinks, handleChange } from '../store.js';
 	import IoIosArrowDropright from 'svelte-icons/io/IoIosArrowDropright.svelte';
+	import { validateLinks } from '$lib';
 
 	let urlLink = '';
 	let shortLink = '';
@@ -13,11 +14,7 @@
 	let warn2 = false;
 
 
-
-
-
-	function shorterLink() {
-		//tentar desacoplar codigo
+	function updateComponent() {
 
 		const id = Math.floor(1000 + Math.random() * 9000).toFixed(1);
 
@@ -28,41 +25,41 @@
 			count: count
 		};
 
-  
-		let regex = /^\s*$/.test(urlLink);
-		let regex2 = /^\s*$/.test(shortLink);
 
-		if (urlLink !== '' && shortLink !== '' && !regex && !regex2) {
-			warn = false;
+  if(!urlLink.startsWith("https://")){
 
-			if (!urlLink.startsWith('https://')) {
-				warn2 = true;
+     warn2 = true  
+     setTimeout(() => warn2 = false, 1400);
+     return 
+}
+ 
+		shortLink = shortLink.trim();
+		urlLink = urlLink.trim();
 
-				setTimeout(() => (warn2 = false), 1400);
+    $dataLinks = [...$dataLinks, links];
+		toast = true;
+		urlLink = '';
+		shortLink = '';
 
-				return;
-			}
+		setTimeout(() => (toast = false), 1400);
+} 	
 
-			shortLink = shortLink.trim();
-			urlLink = urlLink.trim();
+function shorterLink(){ 
 
-			console.log(shortLink);
-
-			$dataLinks = [...$dataLinks, links];
-			toast = true;
-			urlLink = '';
-			shortLink = '';
-
-			setTimeout(() => (toast = false), 1400);
-		} else {
-			warn = true;
-		}
-	}
-  
+  if(validateLinks(urlLink,shortLink)){
+       warn = false 
+       updateComponent()
+    }
+      else {
+             warn = true 
+    }
+}
 
 	function handleClick() {
 		$handleChange = !$handleChange;
 	}
+
+
 </script>
 
 <div class="flex h-20 mt-4 items-center justify-center">

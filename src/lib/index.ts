@@ -13,7 +13,7 @@ export function generateId(){
 
 
 
-export function validateLinks(urlLink, shortLink,warn2,warn){
+export function validateLinks(urlLink: string, shortLink: string){
 
   // Check if all links ara empty or constains empty spaces
 	
@@ -21,28 +21,13 @@ export function validateLinks(urlLink, shortLink,warn2,warn){
 	let regex2 = /^\s*$/.test(shortLink);
 
  
-  if( urlLink !== '' && shortLink !== '' && !regex && !regex2) {
+  return  urlLink !== '' && shortLink !== '' && !regex && !regex2 
 
-  warn = false ;
-
- console.log('testee') 
  
-   if(!urlLink.startsWith('https://')){
-   
-    warn2 = true
-    setTimeout(() => warn2 = false, 1600)
-    return 
+
   }
 
-  }else { 
 
-    warn = true
-
-    console.log('olaa')
-  
-     return;
-  }
-}
 
 
 
