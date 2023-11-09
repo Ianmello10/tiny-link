@@ -17,15 +17,21 @@ export function validateLinks(urlLink: string, shortLink: string){
 
   // Check if all links ara empty or constains empty spaces
 	
-  let regex = /^\s*$/.test(urlLink);
-	let regex2 = /^\s*$/.test(shortLink);
+  let urlLinkWarn : boolean = /^\s*$/.test(urlLink);
+	let shortLinkWarn : boolean = /^\s*$/.test(shortLink);
 
  
-  return  urlLink !== '' && shortLink !== '' && !regex && !regex2 
+  return {
 
- 
+    urlLinkWarn,
+    shortLinkWarn,
 
   }
+
+  }
+
+
+
 
 
 

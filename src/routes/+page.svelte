@@ -54,11 +54,8 @@ function handleClick() {
 
 <style>
 	.font-gradient {
-		background-color: red;
-
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+		background-color: red;	
 		background-clip: text;
-
 		background-size: 100%;
 		background-repeat: repeat;
 

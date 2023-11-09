@@ -32,6 +32,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/fira-mono": "^5.0.8",
+		"@fontsource/open-sans": "^5.0.17",
 		"svelte-icons": "^2.1.0"
 	}
 }
