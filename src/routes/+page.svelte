@@ -1,23 +1,36 @@
 <script lang="ts">
 	import ShowLinks from '../components/showLinks.svelte';
 	import FormComponent from '../components/FormComponent.svelte';
-  import { fade, fly } from 'svelte/transition';
+
+	import { fade, fly } from 'svelte/transition';
 	import { handleChange } from '../store.js';
 
 
-  	function handleClick() {
-		$handleChange = !$handleChange;
-	}
+
+
+function handleClick() {
+	
+    $handleChange = !$handleChange;
+	
+  }
 
 </script>
 
+
 <div class="flex h-20 mt-4 items-center justify-center">
-	<span class="text-2xl block">👽</span>
-	<h1 class=" teste text-6xl font-bold block">TinyLink</h1>
-	<span class="block text-2xl">👽</span>
+
+  <span class="text-2xl block">👽</span>
+	
+  <h1 class="font-gradient text-6xl font-bold block">TinyLink</h1>
+	
+  <span class="block text-2xl">👽</span>
+
+
 </div>
+
 <div class=" w-full mt-2 md:w-[70%] h-auto mx-auto flex justify-center">
-	{#if $handleChange}
+
+  {#if $handleChange}
 
     <FormComponent handleClick={handleClick} />
 
@@ -30,12 +43,17 @@
 			class="drop w-full h-screen fixed top-0"
 		>
 			<ShowLinks />
-		</div>
-	{/if}
+		
+    </div>
+	
+  {/if}
+
+
 </div>
 
+
 <style>
-	.teste {
+	.font-gradient {
 		background-color: red;
 
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
