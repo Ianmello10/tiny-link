@@ -30,15 +30,15 @@ function deleteLink(id: string): void{
 
 </script>
 
-<h2 class="mt-10 text-white text-center text-2xl">My Links</h2>
+<h2 class="mt-10 text-white text-center text-2xl font-bold">My Links</h2>
 <div class="scrollable w-[90%] flex  flex-col  lg:w-[60%] overflow-auto mx-auto mt-4  h-[400px] 
   rounded-md shadow-md  m-4 border-orange-600 ">
   
   <div class="relative ">
  
-    <button on:click={handleClick} class="absolute right-3 text-white top-1 w-8 h-10">
+    <button on:click={handleClick} class="absolute right-3 text-white top-1 w-8 h-8">
 
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
   <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
  

@@ -1,7 +1,7 @@
 
 <script lang="ts">
 import { dataLinks } from '../store.js';
-import { validateLinks } from '$lib/index.js';
+import { validateLinks, generateId } from '$lib/index.js';
 import type {Link} from '$lib/types.js';
 import Toast from './Toast.svelte';
 
@@ -11,14 +11,15 @@ export let handleClick : () => void
 	let urlLink : string = ''
 	let shortLink : string = ''
 	let count : number = 0
-	let toast : boolean = false 
-	let warn : boolean = false
-	let warn2 : boolean = false
+	let toastSuccess : boolean = false 	
+	let toastInvalid : boolean = false
+  let displayWarn1 : boolean = false 
+  let displayWarn2 : boolean = false 
 
 
 function updateComponent() {
 
-	const id  : string = Math.floor(1000 + Math.random() * 9000).toFixed(1);
+	const id  : string = generateId(); 
 
 	let links : Link = {
 		shortName: shortLink + id,
@@ -31,43 +32,73 @@ function updateComponent() {
 
   if(!urlLink.startsWith("https://")){
 
-     warn2 = true  
-     setTimeout(() => warn2 = false, 1400);
+     toastInvalid = true  
+     setTimeout(() => toastInvalid = false, 1600);
+     displayWarn1 = false 
+     displayWarn2 = false
      return 
 }
     shortLink = shortLink.trim();
 		urlLink = urlLink.trim();
 
     $dataLinks = [...$dataLinks, links];
-		toast = true;
+
+    displayWarn1 = false
+    displayWarn2 = false
+
+		toastSuccess = true;
 		urlLink = '';
 		shortLink = '';
-    setTimeout(() => (toast = false), 1400);
+    setTimeout(() => (toastSuccess = false), 1500);
 } 	
 
-function shorterLink(){ 
+function shorterLink(){
 
-  if(validateLinks(urlLink,shortLink)){
-   
-    warn = false 
-    updateComponent()
+   let validationResult = validateLinks(urlLink, shortLink);
+
+      displayWarn1 = (shortLink === '' && urlLink !== '');
+
+      displayWarn2 = (urlLink === '' && shortLink !== '');
+
+ 
+  if (shortLink === '' && urlLink === '') {
+         
+           displayWarn1 = true;
+            displayWarn2 = true;
+        }
+
+  if (validationResult.urlLinkWarn && validationResult.shortLinkWarn) {
+            
+            displayWarn1 = true;
+            displayWarn2 = true;
+        
+  } else if (validationResult.urlLinkWarn) {
+           
+            displayWarn2 = true;
+            displayWarn1 = false;
     
-  } else {
-     warn = true 
-    
-     }
+  } 
+    else if (validationResult.shortLinkWarn) {
+            
+    displayWarn1 = true; 
+    displayWarn2 = false;
+       
+  } 
+         else {
+            updateComponent();
+        }
 }
 
  
 </script>
 
   
-{#if toast}
-	<Toast style="bg-green-500" status="Link encurtado" />
+{#if toastSuccess}
+	<Toast style="bg-green-500" status="Shortened link" />
 {/if}
 
-{#if warn2}
-	<Toast style="bg-red-500" status="Url invalida" />
+{#if toastInvalid}
+	<Toast style="bg-red-500" status="Invalid url" />
 {/if}
 
 
@@ -75,7 +106,7 @@ function shorterLink(){
    m-4 rounded-2xl shadow-md border-2 border-orange-600">
 
 			<button class="absolute right-2 top-2 w-8 h-10" on:click={handleClick}>
-	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 	
@@ -92,10 +123,16 @@ function shorterLink(){
 					bind:value={urlLink}
 				/>
 
-				{#if warn}
-					<span class="text-red-500 absolute bottom-0">Please, fill all fields</span>
-				{/if}
-			</div>
+				{#if displayWarn2}
+					<span class="text-red-500 absolute bottom-0">Please fill in this field</span>
+				
+ 
+              {/if}
+ 
+	
+ 
+
+  </div>
 
 			<div class="flex flex-col mt-8 mb-4 p-2 h-[112px] relative">
 				<label for="shortName">Short name:</label>
@@ -106,8 +143,8 @@ function shorterLink(){
 					bind:value={shortLink}
 				/>
 
-				{#if warn}
-					<span class="text-red-500 absolute bottom-0">Please, fill all fields</span>
+				{#if displayWarn1}
+					<span class="text-red-500 absolute bottom-0">Please fill in this field</span>
 				{/if}
 			</div>
 
