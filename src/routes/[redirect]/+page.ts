@@ -1,9 +1,14 @@
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params }: any) => {
 
-  console.log(params.redirect)
+interface Params {
 
+  redirect : string;
+
+}
+
+export const load: PageLoad = async ({ params }: {params: Params}) => {
+ 
   return {
     redirect: params.redirect
   };
