@@ -102,7 +102,7 @@ function shorterLink(){
 {/if}
 
 
-  <form class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-auto p-4 top-10 relative flex flex-col justify-evenly
+  <form class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-[400px] p-4 top-10 relative flex flex-col justify-evenly
    m-4 rounded-2xl shadow-md border-2 border-orange-600">
 
 			<button type="button" class="absolute right-2 top-2 w-8 h-10" on:click={handleClick}>
