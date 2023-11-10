@@ -1,5 +1,5 @@
 <div align="center">
-#:alien: TinyLink :alien:
+#:alien:TinyLink:alien:
 </div>
 
 <div align="center">
@@ -10,5 +10,5 @@ Tiny link is a **localFirst** link shortener
 
 - Easy to use 
 - Fast ⚡⚡
-- Made with **svelte**) ⚡⚡
+- Made with **svelte** ⚡⚡
 - No data collection 🕵️ 
