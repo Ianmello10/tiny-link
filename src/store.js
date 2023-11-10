@@ -19,4 +19,18 @@ export const dataLinks = writable(browser && storedLinks);
 export const handleChange = writable(true)
 
 
+const theme = JSON.parse(browser && localStorage.getItem('theme')) || 'light'
+
+
+export const themeStore = writable(theme) 
+
+
+themeStore.subscribe((value) => {
+
+
+   if(browser){
+   
+     localStorage.theme = JSON.stringify(value)
+
+} })
 

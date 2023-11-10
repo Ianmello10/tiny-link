@@ -1,23 +1,30 @@
 <script lang="ts">
 	import ShowLinks from '../components/showLinks.svelte';
 	import FormComponent from '../components/FormComponent.svelte';
-
-	import { fade, fly } from 'svelte/transition';
-	import { handleChange } from '../store.js';
+	import ToggleTheme from '../components/toggleTheme.svelte';
+  import { fade, fly } from 'svelte/transition';
+  import { handleChange } from '../store.js';
+ 
 
 
 
 
 function handleClick() {
-	
+
     $handleChange = !$handleChange;
 	
   }
 
+
+ 
 </script>
 
 
-<div class="flex h-20 mt-4 items-center justify-center">
+  <div  class="transition-colors duration-800 ease-linear h-full w-full bg-[#EEEEEE] font-semibold text-[#393E46] dark:bg-[#222831] dark:text-white ">
+
+   <ToggleTheme /> 
+ 
+<div class="flex pt-14 lg:pt-10   items-center justify-center">
 
   <span class="text-2xl block">👽</span>
 	
@@ -26,8 +33,7 @@ function handleClick() {
   <span class="block text-2xl">👽</span>
 
 
-</div>
-
+  </div>
 <div class=" w-full mt-2 md:w-[70%] h-auto mx-auto flex justify-center">
 
   {#if $handleChange}
@@ -38,8 +44,8 @@ function handleClick() {
 
 	{#if $handleChange === false}
 		<div
-			in:fly={{ x: -400, duration: 900 }}
-			out:fly={{ x: -400, duration: 380 }}
+			in:fly={{ x: -400, duration: 280 }}
+			out:fly={{ x: -400, duration: 280 }}
 			class="drop w-full h-screen fixed top-0"
 		>
 			<ShowLinks />
@@ -50,7 +56,7 @@ function handleClick() {
 
 
 </div>
-
+</div>
 
 <style>
 	.font-gradient {
