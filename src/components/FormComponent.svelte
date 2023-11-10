@@ -102,10 +102,10 @@ function shorterLink(){
 {/if}
 
 
-  <form class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-auto p-4 top-10 relative text-white flex flex-col justify-evenly
+  <form class=" w-[90%] lg:w-[60%] mx-auto mt-0 h-auto p-4 top-10 relative flex flex-col justify-evenly
    m-4 rounded-2xl shadow-md border-2 border-orange-600">
 
-			<button class="absolute right-2 top-2 w-8 h-10" on:click={handleClick}>
+			<button type="button" class="absolute right-2 top-2 w-8 h-10" on:click={handleClick}>
 	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>

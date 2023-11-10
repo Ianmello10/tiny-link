@@ -1,7 +1,7 @@
 
 <script lang="ts">
-import {dataLinks, handleChange} from '../store.js'
-import { fade } from 'svelte/transition';
+import {dataLinks, handleChange, themeStore} from '../store.js'
+import { fade,fly } from 'svelte/transition';
 import type {Link} from '$lib/types.js'
 
  
@@ -30,13 +30,14 @@ function deleteLink(id: string): void{
 
 </script>
 
-<h2 class="mt-10 text-white text-center text-2xl font-bold">My Links</h2>
-<div class="scrollable w-[90%] flex  flex-col  lg:w-[60%] overflow-auto mx-auto mt-4  h-[400px] 
-  rounded-md shadow-md  m-4 border-orange-600 ">
+<h2 class="mt-6 text-white text-center text-2xl font-bold ">My Links</h2>
+<div 	in:fly={{ x: -400, duration: 900 }}
+			out:fly={{ x: -400, duration: 380 }} class:scrollable={$themeStore === 'dark'} class=" w-[90%] flex  flex-col py-4  lg:w-[60%] overflow-auto mx-auto mt-4  h-[400px] 
+  rounded-md shadow-md  m-4 border-orange-600  bg-white/60 text-[#393E46] dark:bg-[#222831] dark:text-white">
   
   <div class="relative ">
  
-    <button on:click={handleClick} class="absolute right-3 text-white top-1 w-8 h-8">
+    <button on:click={handleClick} class="absolute right-3 top-1 w-8 h-8">
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
   <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -45,7 +46,7 @@ function deleteLink(id: string): void{
 
     </button>  
 
-  <div class="w-full flex flex-col p-4 mt-4  text-white  justify-around   items-center">
+  <div class="w-full flex flex-col p-6 mt-4    justify-around   items-center">
 
      {#if $dataLinks !== 'undefined' && $dataLinks !== null }
       
@@ -102,7 +103,7 @@ function deleteLink(id: string): void{
  
 
 .scrollable::-webkit-scrollbar {
- width: 10px; /* Width of the scrollbar */
+ width: 12.5px; /* Width of the scrollbar */
  }
 
  .scrollable::-webkit-scrollbar-track {
