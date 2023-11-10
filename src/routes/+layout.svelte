@@ -10,7 +10,7 @@ import {themeStore} from '../store.js'
 
 </script>
 
-<main class="h-screen w-full"  class:dark={$themeStore === 'dark'}  > 
+<main class="h-screen w-full dark:bg-[#222831]"  class:dark={$themeStore === 'dark'}  > 
 
   <slot/>
 </main>

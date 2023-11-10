@@ -19,8 +19,9 @@ function handleClick() {
  
 </script>
 
-
-  <div  class="transition-colors duration-800 ease-linear h-full w-full bg-[#EEEEEE] font-semibold text-[#393E46] dark:bg-[#222831] dark:text-white ">
+<main class="h-screen w-full bg-[#EEEEEE] dark:bg-[#222831]">
+  <div  class="transition-colors duration-800 ease-linear h-auto 
+    w-full bg-[#EEEEEE] font-semibold text-[#393E46] dark:bg-[#222831] dark:text-white ">
 
    <ToggleTheme /> 
  
@@ -34,7 +35,7 @@ function handleClick() {
 
 
   </div>
-<div class=" w-full mt-2 md:w-[70%] h-auto mx-auto flex justify-center">
+<div class=" w-full mt-2 md:w-[70%] h-[400px] mx-auto flex justify-center">
 
   {#if $handleChange}
 
@@ -46,7 +47,7 @@ function handleClick() {
 		<div
 			in:fly={{ x: -400, duration: 280 }}
 			out:fly={{ x: -400, duration: 280 }}
-			class="drop w-full h-screen fixed top-0"
+			class="drop w-full h-screen fixed top-0 z-10"
 		>
 			<ShowLinks />
 		
@@ -56,7 +57,13 @@ function handleClick() {
 
 
 </div>
+
+    <footer class="w-full text-center mt-24  flex items-center justify-center h-16 ">
+    <p class="">Made with ❤️</p>
+  </footer>
 </div>
+
+</main>
 
 <style>
 	.font-gradient {
