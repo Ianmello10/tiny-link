@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@fontsource/fira-mono": "^5.0.8",
 		"@fontsource/open-sans": "^5.0.17",
+		"dotenv": "^16.3.1",
 		"svelte-icons": "^2.1.0"
 	}
 }
