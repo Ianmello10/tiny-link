@@ -34,7 +34,7 @@ function handleClick() {
 
 
   </div>
-<div class=" w-full mt-2 md:w-[70%] h-[400px] mx-auto flex justify-center">
+<div class=" w-full mt-2 md:w-[70%] h-[420px] mx-auto flex justify-center">
 
   {#if $handleChange}
 
@@ -57,7 +57,7 @@ function handleClick() {
 
 </div>
 
-    <footer class="w-full text-center mt-24  flex items-center justify-center h-16 ">
+    <footer class="w-full text-center mt-20  flex items-center justify-center h-16 ">
     <p class="">Made with ❤️</p>
   </footer>
 </div>
