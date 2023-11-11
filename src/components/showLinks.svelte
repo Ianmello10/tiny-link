@@ -4,7 +4,8 @@ import {dataLinks, handleChange, themeStore} from '../store.js'
 import { fade,fly } from 'svelte/transition';
 import type {Link} from '$lib/types.js'
 
- 
+let url = window.location.href
+
 
 function handleClick(){
 
@@ -60,7 +61,12 @@ function deleteLink(id: string): void{
             <span class="flex">
             Short link:<a class="ml-2" href="{link.shortName}">{link.shortName}</a>
             </span>
-         
+                
+
+            <span class="flex">
+            Redirect link:<a href="{link.shortName}" class="ml-2" >{url}{link.shortName}</a>
+            </span>
+
       <div class="flex gap-x-2 mt-2">
         
       <div class="w-6 h-6">
