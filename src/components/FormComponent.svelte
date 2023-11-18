@@ -97,7 +97,7 @@
 			/>
 		</svg>
 		<span class="text-sm absolute right-1 -top-1 text-green-400"
-			>{$dataLinks.length ? $dataLinks.length : 0}</span
+			>{$dataLinks.length ? $dataLinks.length : ''}</span
 		>
 	</button>
 
