@@ -2,71 +2,53 @@
 	import ShowLinks from '../components/showLinks.svelte';
 	import FormComponent from '../components/FormComponent.svelte';
 	import ToggleTheme from '../components/toggleTheme.svelte';
-  import { fade, fly } from 'svelte/transition';
-  import { handleChange } from '../store.js';
- 
+	import { fade, fly } from 'svelte/transition';
+	import { handleChange } from '../store.js';
 
-
-
-function handleClick() {
-
-    $handleChange = !$handleChange;
-	
-  }
-
-
- 
+	function handleClick() {
+		$handleChange = !$handleChange;
+	}
 </script>
 
 <main class="h-screen w-full bg-[#EEEEEE] dark:bg-[#222831]">
-  <div  class="transition-colors duration-800 ease-linear h-auto 
-    w-full bg-[#EEEEEE] font-semibold text-[#393E46] dark:bg-[#222831] dark:text-white ">
+	<div
+		class="transition-colors duration-800 ease-linear h-auto
+    w-full bg-[#EEEEEE] font-semibold text-[#393E46] dark:bg-[#222831] dark:text-white"
+	>
+		<ToggleTheme />
 
-   <ToggleTheme /> 
- 
-<div class="flex pt-14 lg:pt-10   items-center justify-center">
+		<div class="flex pt-14 lg:pt-10 items-center justify-center">
+			<span class="text-2xl block">👽</span>
 
-  <span class="text-2xl block">👽</span>
-	
-  <h1 class="font-gradient text-6xl font-bold block">TinyLink</h1>
-	
-  <span class="block text-2xl">👽</span>
+			<h1 class="font-gradient text-4xl lg:text-6xl font-bold block">TinyLink</h1>
 
+			<span class="block text-2xl">👽</span>
+		</div>
+		<div class=" w-full mt-2 md:w-[70%] h-[420px] mx-auto flex justify-center">
+			{#if $handleChange}
+				<FormComponent {handleClick} />
+			{/if}
 
-  </div>
-<div class=" w-full mt-2 md:w-[70%] h-[420px] mx-auto flex justify-center">
+			{#if $handleChange === false}
+				<div
+					in:fly={{ x: -400, duration: 280 }}
+					out:fly={{ x: -400, duration: 280 }}
+					class="drop w-full h-screen fixed top-0 z-10"
+				>
+					<ShowLinks />
+				</div>
+			{/if}
+		</div>
 
-  {#if $handleChange}
-
-    <FormComponent handleClick={handleClick} />
-
-		{/if}
-
-	{#if $handleChange === false}
-		<div
-			in:fly={{ x: -400, duration: 280 }}
-			out:fly={{ x: -400, duration: 280 }}
-			class="drop w-full h-screen fixed top-0 z-10"
-		>
-			<ShowLinks />
-		
-    </div>
-	
-  {/if}
-
-
-</div>
-
-    <footer class="w-full text-center mt-20  flex items-center justify-center h-16 ">
-    <p class="">Made with ❤️</p>
-  </footer>
-</div>
-
+		<footer class="w-full text-center mt-20 flex items-center justify-center h-16">
+			<p class="">Made with ❤️</p>
+		</footer>
+	</div>
 </main>
 
 <style>
 	.font-gradient {
-		background-color: red;	
+		background-color: red;
 		background-clip: text;
 		background-size: 100%;
 		background-repeat: repeat;
