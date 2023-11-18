@@ -108,12 +108,14 @@
 								</button>
 							</span>
 							<div class="flex w-full mt-2 text-sm md:text-md">Created at: {link.createdAt}</div>
-							<div class="hidden md:flex w-full mt-1 text-sm md:text-md">
-								Last acess: <span class=" ml-2 text-green-500 dark:text-green-400">
-									{link.lastAcessDay} <span class="text-[#393E46] dark:text-white">at</span>
-									{link.lastAcessHrs}</span
-								>
-							</div>
+							{#if link.lastAcessDay && link.lastAcessHrs}
+								<div class="hidden md:flex w-full mt-1 text-sm md:text-md">
+									Last acess: <span class=" ml-2 text-green-500 dark:text-green-400">
+										{link.lastAcessDay} <span class="text-[#393E46] dark:text-white">at</span>
+										{link.lastAcessHrs}</span
+									>
+								</div>
+							{/if}
 
 							<div class="flex gap-x-2 mt-2">
 								<div class="w-6 h-6">
