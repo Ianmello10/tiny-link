@@ -3,6 +3,8 @@
 	import { validateLinks, generateId } from '$lib/index.js';
 	import type { Link } from '$lib/types.js';
 	import Toast from './Toast.svelte';
+	import { doc, setDoc } from 'firebase/firestore';
+	import db from '../lib/firebase.js';
 
 	export let handleClick: () => void;
 
@@ -10,14 +12,14 @@
 	let shortLink: string = '';
 	let count: number = 0;
 	let createdAt: string = new Date().toLocaleDateString();
-	let lastAcessHrs: string = '';
+
 	let lastAcessDay: string = '';
 	let toastSuccess: boolean = false;
 	let toastInvalid: boolean = false;
 	let displayWarn1: boolean = false;
 	let displayWarn2: boolean = false;
 
-	function updateComponent() {
+	async function updateComponent() {
 		const id: string = generateId();
 
 		let links: Link = {
@@ -26,7 +28,6 @@
 			id: id,
 			count: count,
 			createdAt: createdAt,
-			lastAcessHrs: lastAcessHrs,
 			lastAcessDay: lastAcessDay
 		};
 
@@ -42,10 +43,12 @@
 
 		$dataLinks = [...$dataLinks, links];
 
+		toastSuccess = true;
+		const linksRef = doc(db, 'links', id);
+		await setDoc(linksRef, links);
+
 		displayWarn1 = false;
 		displayWarn2 = false;
-
-		toastSuccess = true;
 		urlLink = '';
 		shortLink = '';
 		setTimeout(() => (toastSuccess = false), 1500);

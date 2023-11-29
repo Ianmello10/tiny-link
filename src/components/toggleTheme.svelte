@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { themeStore } from '../store.js';
-	import { fade, fly } from 'svelte/transition';
 
 	function toggleTheme() {
 		$themeStore === 'dark' ? ($themeStore = 'light') : ($themeStore = 'dark');
