@@ -19,5 +19,5 @@ export let URL_BASE;
 if (import.meta.env.MODE === "development") {
   URL_BASE = import.meta.env.VITE_URL;
 } else {
-  URL_BASE = "https://example.com";
+  URL_BASE = import.meta.env.VITE_URL_PROD;
 }
