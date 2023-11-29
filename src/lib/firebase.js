@@ -1,6 +1,6 @@
 import { getApp, initializeApp } from "firebase/app";
 import "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,6 +25,9 @@ function initializeAppIfNotExists() {
 }
 // Initialize Firebase
 const app = initializeAppIfNotExists();
-const db = getFirestore(app);
+//const db = getFirestore(app)
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+});
 
 export default db;
