@@ -46,6 +46,10 @@
 	function handleClick() {
 		$handleChange = !$handleChange;
 	}
+
+	function addZero(v) {
+		return String(v).padStart(2, '0');
+	}
 </script>
 
 {#if toastClip}
@@ -148,13 +152,13 @@
 							{#if link.lastAcessDay}
 								<div class="hidden md:flex w-full mt-1 text-sm md:text-md">
 									Last acess: <span class=" ml-2 text-green-500 dark:text-green-400">
-										{link.lastAcessDay.toDate().getDate()}/<span
-											>{link.lastAcessDay.toDate().getMonth()}/</span
-										><span>{link.lastAcessDay.toDate().getFullYear()}{' '}at</span>
+										{addZero(link.lastAcessDay.toDate().getDate())}/<span
+											>{addZero(link.lastAcessDay.toDate().getMonth() + 1)}/</span
+										><span>{addZero(link.lastAcessDay.toDate().getFullYear())}{' '}at</span>
 										<span
-											>{link.lastAcessDay.toDate().getHours()}:{link.lastAcessDay
-												.toDate()
-												.getMinutes()}:{link.lastAcessDay.toDate().getSeconds()}</span
+											>{addZero(link.lastAcessDay.toDate().getHours())}:{addZero(
+												link.lastAcessDay.toDate().getMinutes()
+											)}:{addZero(link.lastAcessDay.toDate().getSeconds())}</span
 										>
 										<span class="text-[#393E46] dark:text-white" /></span
 									>
