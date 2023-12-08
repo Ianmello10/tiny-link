@@ -5,6 +5,7 @@
 	import Toast from './Toast.svelte';
 	import { doc, setDoc } from 'firebase/firestore';
 	import db from '../lib/firebase.js';
+	import { onMount } from 'svelte';
 
 	export let handleClick: () => void;
 
